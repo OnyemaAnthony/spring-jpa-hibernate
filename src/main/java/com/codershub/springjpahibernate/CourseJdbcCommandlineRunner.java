@@ -6,18 +6,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CourseJdbcCommandlineRunner implements CommandLineRunner {
-//
-//    @Autowired
-//    private  CourseJdbcRepository repository;
-    @Autowired
-    private  CourseRepository repository;
 
 
+@Autowired
+private  CourseSpringDataJpaRepository repository;
     @Override
     public void run(String... args) throws Exception {
-        Course course = new Course(1,"Learn java","Anthony micheal");
+        Course course = new Course(1,"Learn java","Anthony");
+        Course cours = new Course(2,"Learn swift","Anthony micheal");
+        repository.save(course);
+        repository.save(cours);
 
-        repository.insert(course);
+        System.out.println(repository.findByAuthor("Anthony"));
+
 
 
 //        repository.insert(new Course(1,"Learn java Now","Anthony"));
