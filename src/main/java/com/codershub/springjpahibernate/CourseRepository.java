@@ -13,7 +13,6 @@ public class CourseRepository {
     private  EntityManager entityManager;
 
     public void insert(Course course){
-        System.out.println("the course is "+course.toString());
         entityManager.merge(course);
     }
 
